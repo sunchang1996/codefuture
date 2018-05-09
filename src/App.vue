@@ -13,5 +13,8 @@ export default {
 <style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  min-width: 1200px;
+  height: 100%;
+  overflow-y: scroll;
 }
 </style>

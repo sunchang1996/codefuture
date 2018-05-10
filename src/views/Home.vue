@@ -32,17 +32,21 @@
             <img src="https://m.xiguacity.cn/static/map/0/2.png" alt="" srcset="" width="100%">
           </div>
         </main>
+        <Navbar></Navbar>
       </div>
     </main>
   </div>
 </template>
-
 <script>
+import Navbar from './Navbar'
 export default {
   name: 'home',
   data () {
     return {
     }
+  },
+  components: {
+    Navbar,
   }
 }
 </script>

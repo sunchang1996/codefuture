@@ -24,6 +24,7 @@ export default {
   data() {
     return {
       sectionList: [
+        {info: '头像', value: '设置头像' },
         {info: '昵称: 阿畅', value: '设置昵称' },
         {info: '学号', value: '123456' },
         {info: '学名: 阿畅', value: '设置学名' },

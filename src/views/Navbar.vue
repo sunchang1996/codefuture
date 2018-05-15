@@ -7,7 +7,6 @@
           <span class="menu-text">{{ nav.name }}</span>
         </router-link>
       </li>
-      <!-- <router-view></router-view> -->
     </ul>
   </div>
 </template>

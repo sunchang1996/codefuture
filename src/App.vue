@@ -32,7 +32,7 @@
         <Navbar></Navbar>
       </div>
     </main>
-    <router-view/>
+    <router-view style="background-color: #113163;"/>
   </div>
 </template>
 
@@ -57,6 +57,8 @@ export default {
   min-width: 1200px;
   height: 100%;
   overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
 }
 
 .container{
@@ -128,6 +130,9 @@ export default {
       margin-bottom: 0;
       font-size: 15px;
     }
+  }
+  .router-view{
+    background-color: #113163 
   }
 }
 </style>

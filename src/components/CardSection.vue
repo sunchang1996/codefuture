@@ -42,6 +42,8 @@ export default {
   }
   .value {
     padding-right: 15%;
+    color: #1890ff;
+    cursor: pointer;
   }
 }
 </style>

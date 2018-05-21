@@ -10,7 +10,7 @@
             :key="index"
             :info="item.info"
             :value="item.value"></card-section>
-
+          <DialogBox></DialogBox>
         </div>
       </div>
     </div>
@@ -18,6 +18,7 @@
 </template>
 <script>
 import CardSection from './CardSection'
+import DialogBox from './DialogBox'
 
 export default {
   name: 'setting',
@@ -37,7 +38,8 @@ export default {
     }
   },
   components: {
-    CardSection
+    CardSection,
+    DialogBox
   }
 }
 </script>

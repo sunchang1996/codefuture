@@ -10,11 +10,11 @@
           placeholder="请输入内容">
       </div>
       <div class="btn-wrap">
-        <button class="cancel button">取消</button>
+        <button class="cancel button" @click="handleClick">取消</button>
         <button class="confirm button">确定</button>
       </div>
     </div>
-  </div>
+  </div>  
 </template>
 <script>
 export default {
@@ -28,10 +28,16 @@ export default {
       type: String,
       default: '这是一段描述'
     }, 
+    hasSwitch: Boolean
   },
-  data: {
-    return() {
+  data() {
+    return {
       content: ''
+    }
+  },
+  methods: {
+    handleClick() {
+      this.$emit('update:hasSwitch', !this.hasSwitch)
     }
   }
 }

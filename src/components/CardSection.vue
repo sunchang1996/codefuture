@@ -4,7 +4,9 @@
       <div class="info">{{ info }}</div>
       <div class="value" @click="handleClick">{{ value }}</div>
       <!-- <div class="value"></div> -->
-      <DialogBox ref="dialog" :hasSwitch.sync="hasSwitch" v-if="hasSwitch"></DialogBox>      
+      <transition name="bounce">
+        <DialogBox ref="dialog" :hasSwitch.sync="hasSwitch" v-if="hasSwitch"></DialogBox>      
+      </transition>
     </div>
     <div class="line"></div>
   </div>

@@ -1,6 +1,6 @@
 <template>
-  <div class="diablog-container">
-    <div class="diablog-box">
+  <div class="diablog-container" @click.self="handleClick">
+    <div class="diablog-box dialogIn" ref="diablogBox">
       <h1 class="title">{{ title }}</h1>
       <p class="describe">{{ describe }}</p>
       <div class="text-content">
@@ -10,7 +10,7 @@
           placeholder="请输入内容">
       </div>
       <div class="btn-wrap">
-        <button class="cancel button" @click="handleClick">取消</button>
+        <button class="cancel button" @click.stop="handleClick">取消</button>
         <button class="confirm button">确定</button>
       </div>
     </div>
@@ -37,6 +37,11 @@ export default {
   },
   methods: {
     handleClick() {
+      const diablog = this.$refs.diablogBox
+      diablog.classList.remove('dialogIn')
+      diablog.classList.add('dialogOut');
+      console.log(diablog.classList)
+
       this.$emit('update:hasSwitch', !this.hasSwitch)
     }
   }

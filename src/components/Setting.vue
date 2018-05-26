@@ -10,6 +10,8 @@
             :key="index"
             :info="item.info"
             :value="item.value"></card-section>
+
+          <upload-image></upload-image>
         </div>
       </div>
     </div>
@@ -17,6 +19,7 @@
 </template>
 <script>
 import CardSection from './CardSection'
+import UploadImage from './UploadImage'
 
 export default {
   name: 'setting',
@@ -36,48 +39,8 @@ export default {
     }
   },
   components: {
-    CardSection
+    CardSection,
+    UploadImage
   }
 }
 </script>
-
-<style lang="less" scoped>
-  .setting-container {
-    width: 100%;
-    .card-wrap {
-      position: relative;
-      width: 700px;
-      margin: 0 auto;
-      padding-top: 20px;
-    }
-    .card-header {
-      position: absolute;
-      margin: 0 auto;
-      left: 50%;
-      top: 0;
-      margin-left: -18px;
-      width: 36px;
-      height: 86px;
-      border: 1px solid rgba(0, 0, 0, .1);
-      box-shadow: 0 0 3px rgba(0, 0, 0, .1);
-      background: rgba(255,255,255,0.2);
-      border-radius: 0 0 2px 2px;
-    }
-    .card-content {
-      min-height: 100px;
-      background: rgba(0,0,0,0.02);
-      border: 1px solid rgba(0,0,0,0.1);
-      margin: 50px;
-      padding: 10px;
-    }
-    .card-hole{
-      margin: 0 auto;
-      width: 42px;
-      height: 10px;
-      border-radius: 6px;
-      background-color: #EFEFF4;
-      border: 1px solid rgba(0,0,0,0.15);
-      margin-bottom: 10px;
-    }
-  }
-</style>

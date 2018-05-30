@@ -11,7 +11,6 @@
             :info="item.info"
             :value="item.value"></card-section>
 
-          <upload-image></upload-image>
         </div>
       </div>
     </div>
@@ -19,7 +18,6 @@
 </template>
 <script>
 import CardSection from './CardSection'
-import UploadImage from './UploadImage'
 
 export default {
   name: 'setting',
@@ -39,8 +37,7 @@ export default {
     }
   },
   components: {
-    CardSection,
-    UploadImage
+    CardSections
   }
 }
 </script>

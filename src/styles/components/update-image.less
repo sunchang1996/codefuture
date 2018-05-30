@@ -1,0 +1,54 @@
+.upload-wrapper{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background-color: @uploadShade;
+  cursor: pointer;
+  z-index: 99;
+  .upload-inner {
+    max-width: 760px;
+    max-height: 90%;
+    width: 90%;
+    padding: 40px;
+    border-radius: 3px;
+    background-color: @white;
+    .drag-box {
+      min-height: 150px;
+      border: 2px dashed rgba(0,0,0,0.3);
+      background-color: @white;
+      padding: 20px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .input-dragOver {
+      border: 2px dashed #2dbcf0;
+    }
+  }
+  .succeed-inner{
+    width: 478px;
+    padding: 17px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: @white;
+    .refresh {
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .confirm {
+      height: 30px;
+      width: 100px;
+
+      margin-top: 30px;
+      border: 1px solid #2dbcf0;
+      outline: none;
+      cursor: pointer;
+    }
+  }
+}

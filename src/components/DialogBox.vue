@@ -11,7 +11,7 @@
       </div>
       <div class="btn-wrap">
         <button class="cancel button" @click.stop="handleClick">取消</button>
-        <button class="confirm button">确定</button>
+        <button class="confirm button" @click="handleSubmit">确定</button>
       </div>
     </div>
   </div>  
@@ -43,6 +43,9 @@ export default {
       console.log(diablog.classList)
 
       this.$emit('update:hasSwitch', !this.hasSwitch)
+    },
+    handleSubmit() {
+      this.$emit('onChange', content)
     }
   }
 }

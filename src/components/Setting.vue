@@ -37,7 +37,7 @@ export default {
     }
   },
   components: {
-    CardSections
+    CardSection
   }
 }
 </script>

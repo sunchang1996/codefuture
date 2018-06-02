@@ -38,6 +38,7 @@ export default {
   position: fixed;
   top: 140px;
   left: 0;
+  z-index: 10;
   .nav-menus{
     background-color: rgba(0,0,0,0.5);
     width: 100px;

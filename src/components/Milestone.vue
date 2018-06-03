@@ -1,5 +1,6 @@
 <template>
-  <div class="milestone-container">
+  <!-- 地图小任务 -->
+  <div class="milestone-container" @click="isShowCourse">
     <card 
       class="card"
       title="新手任务"
@@ -32,7 +33,7 @@ export default {
   position: absolute;
   top: 71%;
   left: 30%;
-  width: 7%;
+  width: 8%;
   height: 12%;
   
   background-size: 70% 89%;

@@ -16,7 +16,7 @@ export default {
     }
   },
   components:{
-    milestone
+    milestone,
   }
 }
 </script>

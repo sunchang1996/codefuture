@@ -25,7 +25,7 @@ export default {
 .card-wrapper {
   position: absolute;
   left: 50%;
-  bottom: 100%;
+  bottom: 118%;
   width: 300px;
   padding: 15px;
   border-radius: 8px;
@@ -33,6 +33,18 @@ export default {
 
   background-color: rgba(0,0,0,0.85);
   transform: translateX(-50%);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid rgba(0,0,0,.85);
+  }
   > .card-title {
     color: #fff;
     border-bottom: 1px solid #333;

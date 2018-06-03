@@ -32,12 +32,15 @@
         <Navbar></Navbar>
       </div>
     </main>
+    <course-content></course-content>        
     <router-view/>
   </div>
 </template>
 
 <script>
 import Navbar from './views/Navbar'
+import CourseContent from '@/components/CourseContent'
+
 export default {
   name: 'App',
   data () {
@@ -46,6 +49,7 @@ export default {
   },
   components: {
     Navbar,
+    CourseContent    
   }
 }
 </script>

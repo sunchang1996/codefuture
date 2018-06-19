@@ -1,6 +1,6 @@
 <template>
   <!-- 地图小任务 -->
-  <div class="milestone-container" @click="isShowCourse" :style="{ top, left, 'background-image': `url(${backgroundImage})`}">
+  <div class="milestone-container" :style="{ top, left, 'background-image': `url(${backgroundImage})`}">
     <card 
       class="card"
       :title="describe"
@@ -29,29 +29,26 @@ export default {
       default: '新手任务'
     }
   },
+  data() {
+    return {
+      isClose: false
+    }
+  },
 
   components: {
-    card
+    card,
   },
-  methods: {
-    isShowCourse() {
-      
-    }
-  }
 }
 </script>
 <style lang="less" scoped>
 .milestone-container {
   position: absolute;
-  // top: 71%;
-  // left: 30%;
   width: 8%;
   height: 12%;
   
   background-size: 70% 89%;
   background-repeat: no-repeat;
   background-position: bottom;
-  // background-image: url('https://m.xiguacity.cn/static/map/state/1111.gif');
   cursor: pointer;
   > .card {
     display: none;

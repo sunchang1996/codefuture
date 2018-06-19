@@ -1,18 +1,21 @@
 <template>
   <main class="main-content">
     <div class="content-fluid">
-      <img src="https://m.xiguacity.cn/static/map/0/2.png" alt="" srcset="" width="100%">
+      <img src="https://m.xiguacity.cn/static/map/0/2.png" width="100%">
       <milestone
+        @click.native="isShowCourse"
         :top="curriculum.top"
         :left="curriculum.left"
         :backgroundImage="curriculum.backgroundImage"
         :describe="curriculum.describe"
         v-for="(curriculum, index) in curriculums" :key="index"></milestone>
     </div>
+    <CourseContent :isClose.sync="isClose"></CourseContent>
   </main>
 </template>
 <script>
 import milestone from '@/components/Milestone'
+import CourseContent from '@/components/CourseContent'
 
 export default {
   name: 'home',
@@ -102,11 +105,19 @@ export default {
           left: '76.3%',
           backgroundImage: "https://m.xiguacity.cn/static/map/state/1111.gif"
         },
-      ]
+      ],
+      isClose: false,
     }
   },
   components:{
     milestone,
+    CourseContent
+  },
+
+  methods: {
+    isShowCourse() {
+      this.isClose = true
+    }
   }
 }
 </script>

@@ -33,6 +33,7 @@ export default {
 
   background-color: rgba(0,0,0,0.85);
   transform: translateX(-50%);
+  z-index: 9;
   &::before {
     content: "";
     position: absolute;

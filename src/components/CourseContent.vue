@@ -20,7 +20,7 @@
                 <div class="card-content">
                   {{ courseName }}
                 </div>
-                <div class="card-button">
+                <div class="card-button" @click="handlePlay">
                   <div class="player-btn">
                     <div class="player-btn-backdrop react-button"></div>
                     <div class="player-btn-content react-button">
@@ -42,14 +42,16 @@
         </div>
       </div>
     </div>
+    <VPlayer :hasPlay.sync="hasPlay"></VPlayer>
   </div>
 </template>
 <script>
 import Milestone from './Milestone'
 import Medal from './Medal'
+import VPlayer from './VPlayer'
 
 export default {
-  name: 'course-content',
+  name: 'CourseContent',
   props: {
     title: {
       type: String,
@@ -58,21 +60,29 @@ export default {
     courseName: {
       type: String,
       default: '主课'
+    },
+    isClose: {
+      type: Boolean,
+      default: false,
     }
   },
   data() {
     return {
-      isClose: true,
+      hasPlay: false,
     }
   },
   components: {
     Milestone,
-    Medal
+    Medal,
+    VPlayer
   },
 
   methods: {
     handleClose() {
-      this.isClose = false;
+      this.$emit('update:isClose', false)
+    },
+    handlePlay() {
+      this.hasPlay = true
     }
   }
 }

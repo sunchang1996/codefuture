@@ -32,7 +32,6 @@
         <Navbar></Navbar>
       </div>
     </main>
-    <course-content></course-content>        
     <router-view/>
   </div>
 </template>
@@ -49,7 +48,6 @@ export default {
   },
   components: {
     Navbar,
-    CourseContent    
   }
 }
 </script>

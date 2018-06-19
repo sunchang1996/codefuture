@@ -16,7 +16,7 @@
                   <span class="student-number">123456789</span>
                   <router-link to="/setting">
                     <div class="setting">
-                        <span>设置</span>
+                      <i class="iconfont icon-setting"></i>
                     </div>
                   </router-link> 
                 </div>
@@ -114,6 +114,8 @@ export default {
       position: absolute;
       top: 5px;
       right: 5px;
+      font-size: 16px;
+      color: #1890ff;
       cursor: pointer;
     }
   }

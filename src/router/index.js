@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
-import Setting from '@/components/setting'
+import Setting from '@/components/Setting'
+import Grade from '@/components/Grade'
+import Production from '@/views/Production'
 
 Vue.use(Router)
 
@@ -21,6 +23,16 @@ export default new Router({
       name: 'setting',
       path: '/setting',
       component: Setting
-    }
+    },
+    {
+      name: 'grade',
+      path: '/grade',
+      component: Grade
+    },
+    {
+      name: 'production',
+      path: '/production',
+      component: Production
+    },
   ]
 })

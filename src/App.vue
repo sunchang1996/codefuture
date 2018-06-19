@@ -1,5 +1,5 @@
 <template>
-  <div id="app"> 
+  <div id="app" style="background-color: #113163;"> 
     <main class="main">
       <div class="container">
         <header class="nav-header">
@@ -16,12 +16,12 @@
                   <span class="student-number">123456789</span>
                   <router-link to="/setting">
                     <div class="setting">
-                        <span>设置</span>
+                      <i class="iconfont icon-setting"></i>
                     </div>
                   </router-link> 
                 </div>
               </div>
-              <router-link class="student-level-box" to="">
+              <router-link class="student-level-box" to="/grade">
                 <img src="https://m.xiguacity.cn/static/l3_resource/person_level/0.png" width="90">
                 <p>我的等级</p>
               </router-link>
@@ -32,12 +32,14 @@
         <Navbar></Navbar>
       </div>
     </main>
-    <router-view style="background-color: #113163;"/>
+    <router-view/>
   </div>
 </template>
 
 <script>
 import Navbar from './views/Navbar'
+import CourseContent from '@/components/CourseContent'
+
 export default {
   name: 'App',
   data () {
@@ -54,7 +56,6 @@ export default {
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  min-width: 1200px;
   height: 100%;
   overflow-y: scroll;
   display: flex;
@@ -113,6 +114,8 @@ export default {
       position: absolute;
       top: 5px;
       right: 5px;
+      font-size: 16px;
+      color: #1890ff;
       cursor: pointer;
     }
   }

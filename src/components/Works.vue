@@ -91,32 +91,4 @@ export default {
     }
   }
 }
-.comment-content {
-  padding: 20px;
-  width: 70%;
-  margin-top: 30px;
-  text-align: left;
-  display: inline-block;
-  vertical-align: top;
-  .content {
-    position: relative;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #A0E75A;
-    > p {
-      color: #607376;
-      font-size: 16px;
-    }
-    &::after {
-      position: absolute;
-      content: '';
-      top: 0;
-      left: -7px;
-      width: 7px;
-      height: 14px;
-      border-top-right-radius: 14px 7px;
-      border-right: 7px solid #A0E75A;
-    }
-  }
-}
 </style>

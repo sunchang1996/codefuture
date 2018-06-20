@@ -20,10 +20,46 @@ p {
   margin-top: 0;
   margin-bottom: 0;
 }
-
 a {
   color: #1890ff;
   background-color: transparent;
   text-decoration: none;
   outline: none;
+}
+
+.comment-content {
+  padding: 20px;
+  width: 70%;
+  margin-top: 30px;
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
+  .content {
+    position: relative;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #A0E75A;
+    > p {
+      color: #607376;
+      font-size: 16px;
+    }
+    &::after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: -7px;
+      width: 7px;
+      height: 14px;
+      border-top-right-radius: 14px 7px;
+      border-right: 7px solid #A0E75A;
+    }
+  }
+}
+.share-works-status {
+  display: flex;
+  justify-content: space-between;
+  margin:10px;
+  > .eye {
+    color: #4DB141;
+  }
 }

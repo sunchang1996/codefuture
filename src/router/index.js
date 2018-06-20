@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
+import HomePage from '@/views/HomePage'
 import Setting from '@/components/Setting'
 import Grade from '@/components/Grade'
 import Production from '@/views/Production'
+import HomeWord from '@/views/HomeWord'
 
 Vue.use(Router)
 
@@ -11,28 +13,34 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: '',
-      component: Home,
+      component: HomePage,
+      children: [
+        {
+          path: '/',
+          component: Home,
+        },
+        {
+          path: '/home',
+          component: Home
+        },
+        {
+          path: '/setting',
+          component: Setting
+        },
+        {
+          path: '/grade',
+          component: Grade
+        },
+        {
+          path: '/production',
+          component: Production
+        },
+      ]
     },
     {
-      path: '/homepage',
-      name: 'home',
-      component: Home,
-    },
-    {
-      name: 'setting',
-      path: '/setting',
-      component: Setting
-    },
-    {
-      name: 'grade',
-      path: '/grade',
-      component: Grade
-    },
-    {
-      name: 'production',
-      path: '/production',
-      component: Production
+      name: 'homeword',
+      path: '/homeword',
+      component: HomeWord
     },
   ]
 })

@@ -16,7 +16,7 @@ export default {
   data() {
     return {
       navList: [
-        { href: '/homepage', src: 'https://m.xiguacity.cn/static/l3_resource/start-class.png', name: '回到主页' },
+        { href: '/home', src: 'https://m.xiguacity.cn/static/l3_resource/start-class.png', name: '回到主页' },
         { href: '/production', src: 'https://m.xiguacity.cn/static/l3_resource/work-space.png', name: '作品空间' },
         { href: '/curriculum', src: 'https://m.xiguacity.cn/static/l3_resource/choose-lecture.png', name: '课程选择' },
         { href: '/scratch', src: 'https://m.xiguacity.cn/static/l3_resource/scratch.png', name: 'scratch' },

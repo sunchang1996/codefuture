@@ -6,7 +6,7 @@
           <div class="top-nav-bar">
             <div class="content">
               <div class="student-wrap">
-                <router-link to="">
+                <router-link to="/setting">
                   <div class="avatar-box">
                     <img class="avatar" src="../assets/avatar.jpg" width="60" height="60">
                   </div>
@@ -15,7 +15,7 @@
                   <span class="student-name">阿畅</span>
                   <span class="student-number">123456789</span>
                   <router-link to="/setting">
-                    <div class="setting">
+                    <div class="setting pointer">
                       <i class="iconfont icon-setting"></i>
                     </div>
                   </router-link> 
@@ -50,6 +50,7 @@ export default {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
+  height: 100%;
 }
 
 .container{
@@ -106,7 +107,6 @@ export default {
       right: 5px;
       font-size: 16px;
       color: #1890ff;
-      cursor: pointer;
     }
   }
   .student-level-box{

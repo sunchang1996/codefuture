@@ -1,7 +1,7 @@
 <template>
   <div class="share-works-comments-wrap">
     <router-link to="/homeword" target="_blank" class="works-item">
-      <div class="share-works-item" :style="{ height }" @click="handleClick">
+      <div class="share-works-item" :style="{ height }" >
         <img src="https://output.xiguacity.cn/homework_screenshot/5ad82f2beb0a1971b138ec4d-c0a15cb991664f6794eea01c94c1d42d.jpg" width="120" height="90">
         <p class="name" v-show="name">
           {{name}}

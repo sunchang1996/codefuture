@@ -4,7 +4,7 @@
     <div class="v-player">
       <div class="player-box">
         <div class="close-wrap">
-          <div class="player-btn" @click="handleClose">
+          <div class="player-btn pointer" @click="handleClose">
             <i></i>
             <span>关闭视频</span>
           </div>
@@ -17,7 +17,7 @@
             </div>
           </div>
           <div class="refresh-box">
-            <div class="player-btn">
+            <div class="player-btn pointer">
               刷新
             </div>
           </div>
@@ -97,7 +97,6 @@ export default {
     border-radius: 4px;
     background-color: #ff5858;
     box-shadow: 0 5px 3psx 0 #ad3232;
-    cursor: pointer;
     transition: all .3s ease;
   }
   .player-loading {

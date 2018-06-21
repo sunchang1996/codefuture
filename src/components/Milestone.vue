@@ -1,6 +1,6 @@
 <template>
   <!-- 地图小任务 -->
-  <div class="milestone-container" :style="{ top, left, 'background-image': `url(${backgroundImage})`}">
+  <div class="milestone-container pointer" :style="{ top, left, 'background-image': `url(${backgroundImage})`}">
     <card 
       class="card"
       :title="describe"
@@ -49,7 +49,6 @@ export default {
   background-size: 70% 89%;
   background-repeat: no-repeat;
   background-position: bottom;
-  cursor: pointer;
   > .card {
     display: none;
   }

@@ -1,6 +1,6 @@
 <template>
   <!-- 勋章 -->
-  <div class="medal-container" :style="{ backgroundImage: `url(${backgroundImage})` }">
+  <div class="medal-container pointer" :style="{ backgroundImage: `url(${backgroundImage})` }">
     <card 
       class="card"
       title="新手任务"
@@ -32,7 +32,6 @@ export default {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: 50%;
-  cursor: pointer;
   > .card {
     display: none;
   }

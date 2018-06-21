@@ -6,7 +6,7 @@
         <div class="border-box3">
           <div class="cards-header">
             {{ title }}
-            <div class="button-close">
+            <div class="button-close pointer">
               <div class="player-btn">
                 <div class="player-btn-backdrop close"></div>
                 <div class="player-btn-content close-btn" @click="handleClose"></div>
@@ -21,9 +21,9 @@
                   {{ courseName }}
                 </div>
                 <div class="card-button" @click="handlePlay">
-                  <div class="player-btn">
-                    <div class="player-btn-backdrop react-button"></div>
-                    <div class="player-btn-content react-button">
+                  <div class="player-btn pointer">
+                    <div class="player-btn-backdrop react-button pointer"></div>
+                    <div class="player-btn-content react-button pointer">
                       复习
                     </div>
                   </div>
@@ -131,7 +131,6 @@ export default {
       height: 40px;
       top: 5px;
       right: 0;
-      cursor: pointer;
       .close {
         width: 40px;
         height: 41px;
@@ -152,7 +151,6 @@ export default {
     position: relative;
     display: inline-block;
     margin-bottom: 10px;
-    cursor: pointer;
     transition: opacity .3s ease;
     &:hover {
       opacity: .9;
@@ -172,7 +170,6 @@ export default {
     height: 42px;
     background-color: rgb(58, 173, 250);
     opacity: 0.5;
-    cursor: pointer;
   }
   .cards-container {
     display: flex;
@@ -212,7 +209,6 @@ export default {
         display: inline-block;
         border-radius: 4px;
         padding-bottom: 4px;
-        cursor: pointer;
         transition: all .3s ease;        
       }
       .player-btn-content {

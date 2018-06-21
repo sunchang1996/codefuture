@@ -2,6 +2,10 @@
   <div class="homeword-container">
     <main class="main">
       <div class="container">
+        <div class="iconfont btn-pc icon-like1 btn-like" @click="clickCount">
+          <span>为 TA 点赞</span>
+        </div>
+        <div class="delete">删除这个分享</div>
         <div class="avatar">
           <img src="../assets/avatar.jpg" width="70" height="70">
         </div>
@@ -27,7 +31,7 @@
         </div>
         <div class="share-works-status">
           <div class="iconfont icon-like1">
-            <span>0</span>
+            <span>{{ likeCount }}</span>
           </div>
           <div class="iconfont eye icon-eye">
             <span>0</span>
@@ -37,6 +41,24 @@
     </main>
   </div>
 </template>
+
+<script>
+export default {
+  name: 'homework',
+  data() {
+    return {
+      likeCount: 0
+    }
+  },
+
+  methods: {
+    clickCount() {
+      this.likeCount ++ ;
+    }
+  }
+}
+</script>
+
 
 <style lang="less" scoped>
 .homeword-container {
@@ -77,6 +99,40 @@
         font-size: 14px;
         line-height: normal;
       }
+    }
+    .btn-like {
+      position: absolute;
+      right: 100%;
+      bottom: 40px;
+      margin-right: 20px;
+      font-size: 36px;
+      text-align: center;
+      background-color: #12B0C7;
+    }
+    .btn-pc {
+      display: inline-block;
+      padding-top: 20px;
+      height: 90px;
+      width: 100px;
+      color: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      > span {
+        font-size: 12px;
+        display: block;
+      }
+    }
+    .delete {
+      position: absolute;
+      
+      left: 100%;
+      right: 0;
+      top: 20px;
+      margin-left: 20px;
+      font-size: 20px;
+      color: #FF4000;
+      white-space: nowrap;
+      cursor: pointer;
     }
   }
   .comment-wrap {

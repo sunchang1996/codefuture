@@ -6,6 +6,7 @@ import Setting from '@/components/Setting'
 import Grade from '@/components/Grade'
 import Production from '@/views/Production'
 import HomeWord from '@/views/HomeWord'
+import Courses from '@/views/Courses'
 
 Vue.use(Router)
 
@@ -35,6 +36,10 @@ export default new Router({
           path: '/production',
           component: Production
         },
+        {
+          path: '/curriculum',
+          component: Courses
+        }
       ]
     },
     {

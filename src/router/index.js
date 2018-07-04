@@ -7,44 +7,56 @@ import Grade from '@/components/Grade'
 import Production from '@/views/Production'
 import HomeWord from '@/views/HomeWord'
 import Courses from '@/views/Courses'
+import Login from '@/views/Login/Login'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
+      redirect: '/login',
+    },
+    {
+      path: '/login',
+      component: Login,
+    },
+    {
+      path: '/home',
       component: HomePage,
       children: [
         {
-          path: '/',
-          component: Home,
-        },
-        {
           path: '/home',
-          component: Home
+          name: 'home',
+          component: Home,
+          // props: {}
         },
         {
           path: '/setting',
+          name: 'setting',
           component: Setting
         },
         {
           path: '/grade',
+          name: 'grade',
           component: Grade
         },
         {
           path: '/production',
+          name: 'production',
           component: Production
         },
         {
           path: '/curriculum',
+          name: 'curriculum',
           component: Courses
         }
       ]
     },
     {
-      name: 'homeword',
       path: '/homeword',
+      name: 'homeword',
       component: HomeWord
     },
   ]

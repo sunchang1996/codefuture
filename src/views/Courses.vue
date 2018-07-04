@@ -1,15 +1,20 @@
 <template>
   <ul class="courses-container">
     <h1>请选择课程</h1>
-    <li class="level" :class="{lock: !item.isUnlocked}" v-for="(item, index) in liveList" :key="index">
-      <img :src="item.image">
-      <div class="lock-wrap" v-show="!item.isUnlocked">
-        <div class="lock-icon">
-          <img :src="item.lockImg" >
+    <li 
+      class="level" 
+      :class="{lock: !item.isUnlocked}" 
+      v-for="(item, index) in liveList" 
+      :key="index"
+      @click="handleChange(item)">
+        <img :src="item.image">
+        <div class="lock-wrap" v-show="!item.isUnlocked">
+          <div class="lock-icon">
+            <img :src="item.lockImg" >
+          </div>
+          <h2>续课后开放</h2>
         </div>
-        <h2>续课后开放</h2>
-      </div>
-      <h2>{{ item.live}}</h2>
+        <h2>{{ item.live}}</h2>
     </li>
   </ul>
 </template>
@@ -45,6 +50,25 @@ export default {
           lockImg: 'http://m.xiguacity.cn/static/l3_resource/lock.png'
         }
       ]
+    }
+  },
+
+  methods: {
+    handleChange(item) {
+      this.$router.push(
+        { 
+          path: '/home',
+          name: 'home',
+          // query: {
+          //   id: 1
+          // },
+          params: {
+            // name: 'home',
+            Url: 'https://m.xiguacity.cn/static/l3_resource/L1.png'
+          }
+        }
+      )
+      console.log('--------------', this.$route)
     }
   }
 }

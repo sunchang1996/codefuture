@@ -7,15 +7,18 @@
           class="nav"
           v-for="(nav, index) in navList"
           :key="index"
-          @click="currentNav = nav.name"
+          @click="handleClick(nav.name)"
           :class="{ active: nav.name === currentNav }">
             {{ nav.content }}
-          </div>
+        </div>
       </div>
 
-    <div class="switcher-content" :style="{ backgroundColor: contentBg }">
-      <slot :name="currentNav"></slot>
-    </div>
+      <div 
+        class="switcher-content" 
+        :style="{ backgroundColor: contentBg }"
+        >
+        <slot :name="currentNav"></slot>
+      </div>
   </div>
 </template>
 
@@ -35,10 +38,14 @@ export default {
   },
   data() {
     return {
-      currentNav: this.navList[0],
+      currentNav: this.navList[1].name,
     }
   },
-
+  methods: {
+    handleClick(val) {
+      this.currentNav = val
+    }
+  },
 }
 </script>
 

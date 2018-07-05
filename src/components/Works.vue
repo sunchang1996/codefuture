@@ -1,7 +1,7 @@
 <template>
   <div class="share-works-comments-wrap">
-    <router-link to="" target="_blank" class="works-item">
-      <div class="share-works-item" :style="{ height }">
+    <router-link to="/homeword" target="_blank" class="works-item">
+      <div class="share-works-item" :style="{ height }" >
         <img src="https://output.xiguacity.cn/homework_screenshot/5ad82f2beb0a1971b138ec4d-c0a15cb991664f6794eea01c94c1d42d.jpg" width="120" height="90">
         <p class="name" v-show="name">
           {{name}}
@@ -39,9 +39,6 @@ export default {
       return this.name ? '162px' : '132px'
     }
   },
-  mounted() {
-    console.log('-------',this.height)
-  }
 }
 </script>
 
@@ -91,34 +88,6 @@ export default {
       font-size: 12px;
       line-height: 15px;
       color: #607376;
-    }
-  }
-}
-.comment-content {
-  padding: 20px;
-  width: 70%;
-  margin-top: 30px;
-  text-align: left;
-  display: inline-block;
-  vertical-align: top;
-  .content {
-    position: relative;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #A0E75A;
-    > p {
-      color: #607376;
-      font-size: 16px;
-    }
-    &::after {
-      position: absolute;
-      content: '';
-      top: 0;
-      left: -7px;
-      width: 7px;
-      height: 14px;
-      border-top-right-radius: 14px 7px;
-      border-right: 7px solid #A0E75A;
     }
   }
 }

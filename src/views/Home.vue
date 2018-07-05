@@ -1,7 +1,7 @@
 <template>
   <main class="main-content">
     <div class="content-fluid">
-      <img src="https://m.xiguacity.cn/static/map/0/2.png" width="100%">
+      <img :src="imageUrl" width="100%">
       <milestone
         @click.native="isShowCourse"
         :top="curriculum.top"
@@ -21,6 +21,7 @@ export default {
   name: 'home',
   data () {
     return {
+      imageUrl: 'https://m.xiguacity.cn/static/map/0/2.png',
       curriculums: [
         {
           top: "71%",
@@ -113,10 +114,24 @@ export default {
     milestone,
     CourseContent
   },
+  
+  mounted() {
+    console.log('这个是---------', this.$route)
+  },
 
   methods: {
     isShowCourse() {
       this.isClose = true
+    },
+    getParams() {
+      console.log('---------', this.$route)
+      // this.imageUrl = .params.bgImage
+    }
+  },
+  watch: {
+    // 监测路由变化,只要变化了就调用获取路由参数方法将数据存储本组件即可
+    '$route': function() {
+      console.log(this.$route.params)
     }
   }
 }

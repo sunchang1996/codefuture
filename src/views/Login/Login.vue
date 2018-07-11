@@ -15,18 +15,18 @@
             </div>
           </div>
           <div class="content_id" slot="student">
-            <div>
+            <div class="content-box">
               <div class="student-number number">
                 <label for="stu_id">学号</label>
-                <input type="text" id="stu_id">
+                <input :class="{error}" type="text" id="stu_id" v-model="studentId">
               </div>
               <div class="student-password number">
                 <label for="password">密码</label>
-                <input type="password" id="password">
+                <input :class="{error}" type="password" id="password" v-model="password">
               </div>
 
               <div class="button-wrap">
-                <div class="button">进入学习界面</div> 
+                <div class="button" @click="handleSubmit">进入学习界面</div> 
               </div>
             </div>
           </div>
@@ -51,7 +51,33 @@ export default {
           name: 'student',
           content: '用学号密码登录'
         }
-      ]
+      ],
+      studentId: '',
+      password: '',
+      error: false,
+    }
+  },
+  methods: {
+    handleSubmit() {
+      this.$axios.post('http://localhost:3000/user/login', {
+        studentId: this.studentId,
+        password: this.password
+      })
+      .then((response) => {
+        const res = response.data;
+        const TOKEN = res.user.token
+
+        this.$localStore.set('FUTURE_WEB_TOKEN', res.user.token)
+        this.$router.push({ 
+          path: '/home',
+          name: 'home', 
+        })
+      })
+      .catch((error) => {
+        if(error.response) {
+          console.log('error', error.response.data)
+        }
+      })
     }
   },
   components: {
@@ -81,6 +107,7 @@ export default {
     // width: 500px;
     width: 500px;
     height: 400px;
+    margin-right: 50px;
     border-radius: 10px;
     background-color: #fff;
     .title {
@@ -99,6 +126,9 @@ export default {
   }
   .content_id {
     padding: 50px 30px 0;
+    .content-box {
+      text-align: center;
+    }
     label {
       padding: 15px;
       font-size: 18px;
@@ -114,10 +144,15 @@ export default {
       color: #f54154;
       outline:none;
     }
+    .error {
+      border: 2px solid #ff9f9f;
+      background-color: #ffebeb;
+    }
     .student-password {
       margin-top: 30px;
     }
     .button-wrap {
+      width: 80%;
       padding: 15px;
       font-size: 18px;
       font-weight: 600;

@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from 'store'
+
 import Home from '@/views/Home'
 import HomePage from '@/views/HomePage'
 import Setting from '@/components/Setting'
@@ -11,12 +13,12 @@ import Login from '@/views/Login/Login'
 
 Vue.use(Router)
 
-export default new Router({
+const router =  new Router({
   mode: 'history',
   routes: [
     {
       path: '/',
-      redirect: '/login',
+      redirect: '/home'
     },
     {
       path: '/login',
@@ -25,12 +27,14 @@ export default new Router({
     {
       path: '/home',
       component: HomePage,
+      meta: {
+        requireAuth: true
+      },
       children: [
         {
           path: '/home',
           name: 'home',
           component: Home,
-          // props: {}
         },
         {
           path: '/setting',
@@ -57,7 +61,25 @@ export default new Router({
     {
       path: '/homeword',
       name: 'homeword',
+      meta: {
+        requireAuth: true
+      },
       component: HomeWord
     },
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  //to and from are Route Object,next() must be called to resolve the hook}
+  let token = store.get('FUTURE_WEB_TOKEN');
+  // console.log('------', to.matched.some(record => console.log(record)))
+  if (to.matched.some(record => record.meta.requireAuth) && (!token || token === null)) {
+    next({
+      path: '/login'
+    })
+  } else {
+    next()
+  }
+})
+
+export default router;

@@ -17,6 +17,8 @@
   </div>  
 </template>
 <script>
+import event from '@/utils/event';
+
 export default {
   name: 'diablog-box',
   props: {
@@ -28,7 +30,8 @@ export default {
       type: String,
       default: '这是一段描述'
     }, 
-    hasSwitch: Boolean
+    hasSwitch: Boolean,
+    selectType: String,
   },
   data() {
     return {
@@ -40,12 +43,13 @@ export default {
       const diablog = this.$refs.dialogBox
       diablog.classList.remove('dialogIn')
       diablog.classList.add('dialogOut');
-      console.log(diablog.classList)
-
+  
       this.$emit('update:hasSwitch', !this.hasSwitch)
     },
     handleSubmit() {
-      this.$emit('onChange', content)
+
+      event.$emit('onChange', { [this.selectType]: this.content })
+      this.$emit('update:hasSwitch', !this.hasSwitch)
     }
   }
 }

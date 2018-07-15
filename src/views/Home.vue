@@ -115,18 +115,14 @@ export default {
     CourseContent
   },
   
-  mounted() {
-    console.log('这个是---------', this.$route)
-  },
 
   methods: {
     isShowCourse() {
       this.isClose = true
     },
     getParams() {
-      console.log('---------', this.$route)
-      // this.imageUrl = .params.bgImage
     }
+    
   },
   watch: {
     // 监测路由变化,只要变化了就调用获取路由参数方法将数据存储本组件即可

@@ -1,11 +1,20 @@
 <template>
   <div class="card-section">
     <div class="content">
-      <div class="info">{{ info }}</div>
-      <div class="value" @click="handleClick(info)">{{ value }}</div>
+      <div class="info" v-show="info === '头像'">
+        <img :src="value" width="68" height="68">
+      </div>
+      <div class="info" v-show="info !== '头像'">{{ info }} {{value}}</div>
+      <div class="value" @click="handleClick(info)">{{ operate }}</div>
       <!-- <div class="value"></div> -->
       <transition name="bounce">
-        <DialogBox ref="dialog" :hasSwitch.sync="hasSwitch" v-if="hasSwitch"></DialogBox>      
+        <DialogBox 
+          ref="dialog" 
+          :hasSwitch.sync="hasSwitch" 
+          v-if="hasSwitch && !disabled"
+          :title="title"
+          :selectType="typeName"
+          :describe="describe"></DialogBox>      
       </transition>
       <upload-image 
         ref="uploadImage"
@@ -23,6 +32,14 @@ export default {
   props: {
     info: String,
     value: [String, Number],
+    operate: [String, Number],
+    title: String,
+    describe: String,
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    typeName: String
   },
 
   data() {

@@ -13,7 +13,8 @@
             :operate="item.operate"
             :title="item.title"
             :describe="item.describe"
-            :disabled="item.disabled"></card-section>
+            :disabled="item.disabled"
+            :typeName="item.name"></card-section>
 
         </div>
       </div>
@@ -22,6 +23,7 @@
 </template>
 <script>
 import CardSection from './CardSection'
+import event from '@/utils/event'
 
 export default {
   name: 'setting',
@@ -39,12 +41,17 @@ export default {
         {info: '性别:', name: 'gender', value: '', operate: '男 / 女', disabled: true },
         {info: '年龄:', name: 'age', value: '', title: '设置年龄！', describe:'请输入您孩子的年龄', operate: '设置/修改' },
         {info: 'QQ:', name: 'QQ', value: '', title: '更新QQ密码', describe:'您现在的QQ密码是:', operate: '设置/修改' },
-        {info: '密码', value: '',  title: '设置密码！', describe:'设置密码后，就可以用学号加密码登录，不需要爸爸妈妈的微信号啦',operate: '设置/修改' },
-      ]
+        {info: '密码', name: 'password', value: '',  title: '设置密码！', describe:'设置密码后，就可以用学号加密码登录，不需要爸爸妈妈的微信号啦',operate: '设置/修改' },
+      ],
+      selectEditObject: '',
     }
   },
   mounted() {
     this.getMeUer();
+    event.$on('onChange', (value) => {
+      this.selectEditObject = value
+      this.setMeUser();
+    })
   },
   methods: {
     getMeUer() {
@@ -64,6 +71,16 @@ export default {
             }
           }
         })
+      })
+    },
+    setMeUser() {
+      const token = this.$localStore.get('FUTURE_WEB_TOKEN')
+      this.$axios.put('http://localhost:3000/user/edit', this.selectEditObject, { Headers: {
+          Authorization: token
+        },
+      })
+      .then((res) => {
+        this.getMeUer()
       })
     }
   },

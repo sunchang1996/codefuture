@@ -8,12 +8,12 @@
               <div class="student-wrap">
                 <router-link to="/setting">
                   <div class="avatar-box">
-                    <img class="avatar" src="../assets/avatar.jpg" width="60" height="60">
+                    <img class="avatar" :src="userData.avatar" width="60" height="60">
                   </div>
                 </router-link>
                 <div class="student-info">
-                  <span class="student-name">阿畅</span>
-                  <span class="student-number">123456789</span>
+                  <span class="student-name">{{ userData.nickname }}</span>
+                  <span class="student-number">{{ userData.studentId }}</span>
                   <router-link to="/setting">
                     <div class="setting pointer">
                       <i class="iconfont icon-setting"></i>
@@ -40,8 +40,27 @@ import Navbar from './Navbar'
 
 export default {
   name: 'homepage',
+  data() {
+    return {
+      userData: '',
+    }
+  },
   components: {
     Navbar,
+  },
+  mounted() {
+    this.getUser()
+  },
+  methods: {
+    async getUser() {
+      const token = this.$localStore.get('FUTURE_WEB_TOKEN')
+      this.$axios.get('http://localhost:3000/user/me',{ Headers: {
+          Authorization: token
+        }
+      }).then((res) => {
+        this.userData = res.data.user
+      })
+    }
   }
 }
 </script>

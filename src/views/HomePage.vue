@@ -53,13 +53,17 @@ export default {
   },
   methods: {
     async getUser() {
-      const token = this.$localStore.get('FUTURE_WEB_TOKEN')
-      this.$axios.get('http://localhost:3000/user/me',{ Headers: {
-          Authorization: token
-        }
-      }).then((res) => {
-        this.userData = res.data.user
-      })
+      try {
+        const { user } = await this.$request('GET', '/user/me')
+        this.userData = user;
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  },
+  watch: {
+    '$route': function() {
+      console.log(this.$route.params)
     }
   }
 }

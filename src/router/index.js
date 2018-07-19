@@ -22,6 +22,7 @@ const router =  new Router({
     },
     {
       path: '/login',
+      name: 'login',
       component: Login,
     },
     {
@@ -71,6 +72,16 @@ const router =  new Router({
 
 router.beforeEach((to, from, next) => {
   //to and from are Route Object,next() must be called to resolve the hook}
+  // if (to.matched.some(res => res.meta.requireAuth)) {
+  //   if (store.get('FUTURE_WEB_TOKEN')) {
+  //     next()
+  //   }
+  // } else {
+  //   next({
+  //     path: '/login',
+  //     name: 'login'
+  //   })
+  // }
   let token = store.get('FUTURE_WEB_TOKEN');
   // console.log('------', to.matched.some(record => console.log(record)))
   if (to.matched.some(record => record.meta.requireAuth) && (!token || token === null)) {

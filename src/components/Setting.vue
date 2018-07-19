@@ -17,6 +17,9 @@
             :typeName="item.name"></card-section>
 
         </div>
+        <div class="card-quit" @click="handleQuit">
+          <div>退出登录</div>
+        </div>
       </div>
     </div>
   </div>
@@ -41,7 +44,7 @@ export default {
         {info: '性别:', name: 'gender', value: '', operate: '男 / 女', disabled: true },
         {info: '年龄:', name: 'age', value: '', title: '设置年龄！', describe:'请输入您孩子的年龄', operate: '设置/修改' },
         {info: 'QQ:', name: 'QQ', value: '', title: '更新QQ密码', describe:'您现在的QQ密码是:', operate: '设置/修改' },
-        {info: '密码', name: 'password', value: '',  title: '设置密码！', describe:'设置密码后，就可以用学号加密码登录，不需要爸爸妈妈的微信号啦',operate: '设置/修改' },
+        {info: '密码', name: 'passwordHash', value: '',  title: '设置密码！', describe:'设置密码后，就可以用学号加密码登录，不需要爸爸妈妈的微信号啦',operate: '设置/修改' },
       ],
       selectEditObject: '',
     }
@@ -54,33 +57,40 @@ export default {
     })
   },
   methods: {
-    getMeUer() {
-      const token = this.$localStore.get('FUTURE_WEB_TOKEN')
-      this.$axios.get('http://localhost:3000/user/me', { Headers: {
-          Authorization: token
-        } 
-      }).then((res) => {
-        const result = res.data.user;
+    async getMeUer() {
+      try {
+        const { user } = await this.$request('GET', '/user/me');
         this.sectionList.forEach((item) => {
-          for (const key in result) {
-            if (result.hasOwnProperty(key)) {
-              const element = result[key];
+          for (const key in user) {
+            if (user.hasOwnProperty(key)) {
+              const element = user[key];
+              if (item.name === 'passwordHash') {
+                return
+              }
               if (item.name === key ) {
                 item.value = element;
               }
             }
           }
         })
-      })
+      } catch (error) {
+        console.log(error)
+      }       
     },
-    setMeUser() {
-      const token = this.$localStore.get('FUTURE_WEB_TOKEN')
-      this.$axios.put('http://localhost:3000/user/edit', this.selectEditObject, { Headers: {
-          Authorization: token
-        },
-      })
-      .then((res) => {
-        this.getMeUer()
+
+    async setMeUser() {
+      try {
+        await this.$request('PUT', '/user/edit', {}, this.selectEditObject)
+      } catch (error) {
+        console.log(error)
+      }
+    },
+
+    handleQuit() {
+      this.$localStore.remove('FUTURE_WEB_TOKEN')
+      this.$router.push({ 
+        path: '/login',
+        name: 'login', 
       })
     }
   },
@@ -89,3 +99,4 @@ export default {
   }
 }
 </script>
+

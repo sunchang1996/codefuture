@@ -38,6 +38,7 @@
 </template>
 <script>
 import Switcher from '@/components/Switcher'
+
 export default {
   name: 'login',
   data() {
@@ -58,26 +59,20 @@ export default {
     }
   },
   methods: {
-    handleSubmit() {
-      this.$axios.post('http://localhost:3000/user/login', {
-        studentId: this.studentId,
-        password: this.password
-      })
-      .then((response) => {
-        const res = response.data;
-        const TOKEN = res.user.token
-
-        this.$localStore.set('FUTURE_WEB_TOKEN', res.user.token)
+    async handleSubmit() {
+      try {
+        const { user } = await this.$request('POST', '/user/login', {}, {
+          studentId: this.studentId,
+          password: this.password
+        });
+        this.$localStore.set('FUTURE_WEB_TOKEN', user.token)
         this.$router.push({ 
           path: '/home',
           name: 'home', 
         })
-      })
-      .catch((error) => {
-        if(error.response) {
-          console.log('error', error.response.data)
-        }
-      })
+      } catch (error) {
+        console.log(error)
+      }
     }
   },
   components: {

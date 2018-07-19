@@ -64,10 +64,17 @@ export default {
       this.$refs.input.value = null;
     },
     uploadFiles(files) {
-      let postFiles = Array.prototype.slice.call(files);
-      console.log('files 文件', postFiles)
-      if (postFiles.length === 0) return;
-      this.isSucceed = true
+      const image = new FormData()
+      image.append('file', files[0])
+      if (files.length === 0) return;
+      const token = this.$localStore.get('FUTURE_WEB_TOKEN')
+      this.$axios.post('http://localhost:3000/user/avatar', image,{ Headers: {
+          Authorization: token
+        } 
+      })
+      .then((res) => {
+        this.isSucceed = true
+      })
     },
     onDrop(e) {
       this.dragOver = false;

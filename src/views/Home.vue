@@ -11,6 +11,18 @@
         v-for="(curriculum, index) in curriculums" :key="index"></milestone>
     </div>
     <CourseContent :isClose.sync="isClose"></CourseContent>
+    <div class="project-wrap">
+      <div class="select-box">
+        <div class="item item-location item-current">
+          <img src="https://m.xiguacity.cn/static/haile_test/l0map.png">
+        </div>
+         <div class="item item2-location">
+          <router-link to="/miniproject">
+            <img src="https://m.xiguacity.cn/static/haile_test/project.png">
+          </router-link>
+        </div>
+      </div>
+    </div>
   </main>
 </template>
 <script>
@@ -148,6 +160,48 @@ export default {
     margin-left: auto;
     margin-right: auto;
     width: 75%;
+  }
+  .project-wrap {
+    position: fixed;
+    top: 150px;
+    right: 0;
+    z-index: 10;
+    .select-box {
+      position: relative;
+      width: 150px;
+      height: 287px;
+      background-image: url(https://m.xiguacity.cn/static/haile_test/nav-bottom.png);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+    .item {
+      position: absolute;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      width: 106px;
+      height: 106px;
+      text-align: center;
+    }
+    .item-location {
+      top: 26px;
+      left: 23px;
+    }
+    .item-current {
+      background-image: url(https://m.xiguacity.cn/static/haile_test/current-state.png);
+    }
+    .item2-location {
+      bottom: 27px;
+      left: 24px;
+      &:hover {
+        background-image: url(https://m.xiguacity.cn/static/haile_test/hover-state.png);
+      }
+    }
+    img {
+      width: 95%;
+      cursor: pointer;
+    }
   }
 }
 </style>
